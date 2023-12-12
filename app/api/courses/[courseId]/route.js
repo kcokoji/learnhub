@@ -14,6 +14,17 @@ export async function DELETE(req, { params }) {
   }
 
   try {
+    const transaction = await prismadb.transaction.findFirst({
+      where: {
+        courseId,
+      },
+    });
+    if (transaction) {
+      // If a transaction exists, throw an error
+      throw new Error(
+        "Course has been purchased by a student and cannot be deleted."
+      );
+    }
     const deleteCourse = await prismadb.course.delete({
       where: {
         id: courseId,

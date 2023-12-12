@@ -1,6 +1,6 @@
 "use client";
 
-import Loader from "@/components/ui/loader";
+import AnimateLoader from "@/components/ui/loader";
 import { useState } from "react";
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
@@ -75,6 +75,7 @@ export default function ChapterForm({ data }) {
         `/api/courses/${params.courseId}/chapters/${params.chapterId}`
       );
       router.push(`/instructor/courses/${params.courseId}`);
+      router.refresh();
       toast.success("Course Deleted");
     } catch (error) {
       toast.error("Something went wrong.");
@@ -84,7 +85,7 @@ export default function ChapterForm({ data }) {
   };
 
   return (
-    <div className=" py-4 lg:px-10 space-y-4 px-6">
+    <div className=" py-4 lg:px-10 space-y-4 px-6 ">
       <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -103,7 +104,7 @@ export default function ChapterForm({ data }) {
           {published ? (
             <Button onClick={UnPublish}>
               {loading ? (
-                <Loader size={24} color="white" />
+                <AnimateLoader size={24} color="white" />
               ) : (
                 <h1>Unpublish</h1>
               )}
@@ -119,7 +120,7 @@ export default function ChapterForm({ data }) {
               onClick={onPublish}
             >
               {loading ? (
-                <Loader size={24} color="#f97316" />
+                <AnimateLoader size={24} color="#f97316" />
               ) : (
                 <h1>Publish</h1>
               )}
@@ -135,7 +136,7 @@ export default function ChapterForm({ data }) {
           </Button>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4 pt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-4 pt-8">
         <div className="flex flex-col gap-y-4">
           <div className="flex items-center">
             <div className="mr-2 p-2 bg-primary/20 rounded-full">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Categories } from "@/lib/categories";
 import getCourseByCategory from "@/actions/get-course-by-category";
 import Heading from "@/components/Heading";
@@ -11,9 +11,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import CourseCard from "../../../../../components/course-card";
+import AnimateLoader from "@/components/ui/loader";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params: { categorytitle } }) {
   const categoryTitle = decodeURIComponent(categorytitle);
+
   const category = Categories.find(
     (category) => category.title === categoryTitle
   );
@@ -32,6 +37,7 @@ export async function generateMetadata({ params: { categorytitle } }) {
 export default async function CategoryPage({ params: { categorytitle } }) {
   const categoryTitle = decodeURIComponent(categorytitle);
   const courses = await getCourseByCategory(categoryTitle);
+
   const category = Categories.find(
     (category) => category.title === categoryTitle
   );
@@ -70,6 +76,21 @@ export default async function CategoryPage({ params: { categorytitle } }) {
             </SelectContent>
           </Select>
         </div>
+        {!courses || courses.length === 0 ? (
+          // If courses are not available
+          <div className="flex justify-center items-center flex-col gap-y-2">
+            <Heading title="No Courses Available" className="text-center" />
+          </div>
+        ) : (
+          // If courses are available
+          <Suspense fallback={<AnimateLoader size={50} color="#f97316" />}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-2">
+              {courses.map((course) => (
+                <CourseCard key={course.id} data={course} />
+              ))}
+            </div>
+          </Suspense>
+        )}
       </div>
     </div>
   );

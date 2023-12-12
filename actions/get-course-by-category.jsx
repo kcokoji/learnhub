@@ -1,12 +1,23 @@
 import prismadb from "@/lib/prismaDB";
 
 export default async function getCourseByCategory(categoryTitle) {
-  const getCourse = await prismadb.course.findMany({
-    where: {
-      categoryTitle,
-      published: true,
-    },
-  });
+  try {
+    const getCourse = await prismadb.course.findMany({
+      where: {
+        categoryTitle,
+        published: true,
+      },
+      include: {
+        chapters: {
+          where: {
+            published: true,
+          },
+        },
+      },
+    });
 
-  return getCourse;
+    return getCourse;
+  } catch (err) {
+    return null;
+  }
 }

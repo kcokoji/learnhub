@@ -22,8 +22,8 @@ export default function Navbar() {
 
     { name: "FAQs", href: "#faq" },
     {
-      name: "Become a Teacher",
-      href: "/instructor/courses",
+      name: "Instructor",
+      href: "/instructor",
     },
   ];
 
@@ -82,7 +82,7 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:flex justify-center items-center gap-1">
           <SignedOut>
-            <Button asChild size="lg">
+            <Button asChild>
               <Link href="/sign-up">
                 SignUp <MoveRight className="h-5 w-5 ml-2" />
               </Link>
@@ -90,7 +90,6 @@ export default function Navbar() {
             <Button
               asChild
               variant="ghost"
-              size="lg"
               className="text-md text-black hover:text-primary"
             >
               <Link href="/sign-in">Login</Link>
@@ -101,7 +100,7 @@ export default function Navbar() {
               variant="ghost"
               className="text-md  transition-colors hover:text-primary text-black"
             >
-              <Link href="/mylearning">My Learning</Link>
+              <Link href="/my-learning">My Learning</Link>
             </Button>
 
             <Button variant="link">

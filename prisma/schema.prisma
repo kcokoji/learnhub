@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Course {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
   userId        String
   title         String
   description   String?
@@ -20,23 +20,25 @@ model Course {
   chapters      Chapter[]
   attachments   String?
   categoryTitle String?
-  published     Boolean   @default(false)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  transactions  Transaction[]
+  published     Boolean       @default(false)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 }
 
 model Chapter {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String?
-  videoUrl    String?
-  muxData     MuxData[]
-  free        Boolean   @default(false)
-  courseId    String    @db.ObjectId
-  course      Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  published   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String?
+  videoUrl     String?
+  muxData      MuxData[]
+  free         Boolean        @default(false)
+  courseId     String         @db.ObjectId
+  course       Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  published    Boolean        @default(false)
+  userProgress UserProgress[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
 
   @@index([courseId])
 }
@@ -49,4 +51,29 @@ model MuxData {
   chapter    Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+model Transaction {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  email     String
+  reference String
+  courseId  String   @db.ObjectId
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId, userId])
+}
+
+model UserProgress {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
+  chapter     Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId   String   @db.ObjectId
+  isCompleted Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, chapterId])
 }

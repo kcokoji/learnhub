@@ -2,6 +2,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/themeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={dmSans.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Toaster position="top-center" richColors />
             {children}
           </ThemeProvider>
         </body>

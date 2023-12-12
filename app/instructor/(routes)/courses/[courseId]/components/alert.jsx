@@ -6,7 +6,7 @@ export function PublishedAlert() {
   return (
     <Alert>
       <AlertDescription>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center text-sm lg:text-base">
           <AlertTriangleIcon className="h-4 w-4 mr-2" color="red" /> Warning!
           This course is unpublished.It will not be visible to students.
         </div>

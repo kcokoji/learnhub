@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
-import Loader from "@/components/ui/loader";
+import AnimateLoader from "@/components/ui/loader";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -110,7 +110,11 @@ const PriceField = ({ title, value, courseId }) => {
               />
               <div className="flex gap-x-2">
                 <Button type="submit" disabled={loading}>
-                  {loading ? <Loader size={24} color="white" /> : <h1>Save</h1>}
+                  {loading ? (
+                    <AnimateLoader size={24} color="white" />
+                  ) : (
+                    <h1>Save</h1>
+                  )}
                 </Button>
               </div>
             </form>

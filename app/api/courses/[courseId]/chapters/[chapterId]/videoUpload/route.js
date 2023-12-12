@@ -63,9 +63,11 @@ export async function PATCH(req, { params }) {
       });
     }
 
+    // Send JSON response and end the function here
     return NextResponse.json(updatedChapter);
   } catch (error) {
     console.log("[CHAPTER_VIDEO_URL_PATCH]", error);
+    // Handle error and end the function
     return new NextResponse("Internal error", { status: 500 });
   }
 }

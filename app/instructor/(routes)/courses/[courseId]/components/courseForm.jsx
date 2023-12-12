@@ -21,7 +21,7 @@ import AttachmentUploader from "./attachment";
 import { useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
-import Loader from "@/components/ui/loader";
+import AnimateLoader from "@/components/ui/loader";
 import { useParams, useRouter } from "next/navigation";
 import Confetti from "react-confetti";
 import AlertModal from "@/components/modals/alert-modal";
@@ -132,7 +132,7 @@ export default function CourseForm({ data }) {
           {published ? (
             <Button onClick={UnPublish} disabled={loading}>
               {loading ? (
-                <Loader size={24} color="white" />
+                <AnimateLoader size={24} color="white" />
               ) : (
                 <h1>Unpublish</h1>
               )}
@@ -149,7 +149,7 @@ export default function CourseForm({ data }) {
               onClick={onPublish}
             >
               {loading ? (
-                <Loader size={24} color="#f97316" />
+                <AnimateLoader size={24} color="#f97316" />
               ) : (
                 <h1>Publish</h1>
               )}

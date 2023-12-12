@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GripVertical, Pencil, PlusCircle } from "lucide-react";
-import Loader from "@/components/ui/loader";
+import AnimateLoader from "@/components/ui/loader";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -113,7 +113,7 @@ const ChapterField = ({ title, value }) => {
               <div className="flex gap-x-2">
                 <Button type="submit" disabled={loading}>
                   {loading ? (
-                    <Loader size={24} color="white" />
+                    <AnimateLoader size={24} color="white" />
                   ) : (
                     <h1>Create</h1>
                   )}

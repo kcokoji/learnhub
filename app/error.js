@@ -14,8 +14,11 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <Heading title="Something went wrong" />
+    <div className="flex flex-col items-center justify-center h-screen gap-2">
+      <Heading
+        title="Something went wrong"
+        description="An unexpected error occured .Please try again or go back "
+      />
       <div className="flex gap-2">
         <Button
           onClick={

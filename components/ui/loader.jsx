@@ -1,15 +1,9 @@
-import { HashLoader } from "react-spinners";
+import { Loader } from "lucide-react";
 
-export default function Loader({ size, color }) {
+export default function AnimateLoader({ size, color }) {
   return (
-    <div className="flex justify-center items-center z-50">
-      <HashLoader
-        color={color}
-        speedMultiplier={2}
-        aria-label="Loading Spinner"
-        size={size}
-        loading={true}
-      />
+    <div className="flex justify-center items-center">
+      <Loader color={color} className="animate-spin" size={size} />
     </div>
   );
 }

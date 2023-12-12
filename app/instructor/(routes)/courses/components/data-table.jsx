@@ -53,7 +53,7 @@ export function DataTable({ columns, data, searchKey }) {
           onChange={(event) =>
             table.getColumn(searchKey)?.setFilterValue(event.target.value)
           }
-          className="max-w-md"
+          className="w-fit lg:w-96"
         />
         <Button onClick={() => router.refresh()} variant="secondary" size="sm">
           <RefreshCcw className="h-4 w-4 mr-2" />

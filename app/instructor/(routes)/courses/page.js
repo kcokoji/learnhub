@@ -33,7 +33,7 @@ export default async function CoursesPage() {
 
   return (
     <div className="py-4 lg:px-10 space-y-4 px-6">
-      <div className="flex justify-end gap-2">
+      <div className="lg:flex justify-end gap-2 hidden">
         {" "}
         <Button variant="ghost" asChild>
           <Link href="/">Student</Link>

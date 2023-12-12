@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs";
-import Sidebar from "./components/navbar";
+import Sidebar from "../components/navbar";
 import { currentUser } from "@clerk/nextjs";
-import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Instructor",
@@ -20,12 +19,9 @@ export default async function InstructorLayout({ children }) {
 
   return (
     <>
-      <div className="flex-row h-screen flex">
+      <div className="lg:flex-row lg:h-screen lg:flex">
         <Sidebar firstName={firstName} lastName={lastName} />
-        <section className="flex-1 overflow-y-auto">
-          <Toaster position="top-center" richColors />
-          {children}
-        </section>
+        <section className="lg:flex-1 overflow-y-auto">{children}</section>
       </div>
     </>
   );

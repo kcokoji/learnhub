@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Modal } from "../ui/modal";
 import { Button } from "../ui/button";
-import Loader from "../ui/loader";
+import AnimateLoader from "../ui/loader";
 
 export default function AlertModal({ isOpen, onClose, onConfirm, loading }) {
   const [isMounted, setMounted] = useState(false);
@@ -23,7 +23,11 @@ export default function AlertModal({ isOpen, onClose, onConfirm, loading }) {
           Cancel
         </Button>
         <Button variant="destructive" onClick={onConfirm} disabled={loading}>
-          {loading ? <Loader size={24} color="white" /> : <h1>Delete</h1>}
+          {loading ? (
+            <AnimateLoader size={24} color="white" />
+          ) : (
+            <h1>Delete</h1>
+          )}
         </Button>
       </div>
     </Modal>

@@ -62,3 +62,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+.vds-video-layout {
+  --video-brand: #f97316;
+  --video-sm-button-size: 40px;
+  --video-sm-play-button-size: 42px;
+  --video-border: 0px;
+  --video-sm-play-button-bg: #f97316;
+}

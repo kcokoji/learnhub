@@ -8,6 +8,13 @@ import { toast } from "sonner";
 import { useRouter, useParams } from "next/navigation";
 import axios from "axios";
 import "@uploadthing/react/styles.css";
+import "@vidstack/react/player/styles/default/theme.css";
+import "@vidstack/react/player/styles/default/layouts/video.css";
+import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import {
+  defaultLayoutIcons,
+  DefaultVideoLayout,
+} from "@vidstack/react/player/layouts/default";
 
 export default function VideoUpload({ url, muxData }) {
   const [editing, setEditing] = useState(false);
@@ -76,12 +83,12 @@ export default function VideoUpload({ url, muxData }) {
         <>
           {url ? (
             <>
-              <div className=" rounded-md overflow-hidden bg-muted-foreground/60">
+              <div className=" rounded-md aspect-video overflow-hidden bg-muted-foreground/60">
                 {/* <MuxPlayer playbackId={muxData[0].playbackId || ""} /> */}
-                <video width="100%" height="100%" controls>
-                  <source src={url} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <MediaPlayer src={url} playsinline>
+                  <MediaProvider />
+                  <DefaultVideoLayout icons={defaultLayoutIcons} />
+                </MediaPlayer>
               </div>
               <p className="text-muted-foreground/80 text-xs">
                 Video could take time to load please refresh to view uploaded

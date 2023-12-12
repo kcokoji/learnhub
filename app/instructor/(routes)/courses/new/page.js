@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Heading from "@/components/Heading";
-import Loader from "@/components/ui/loader";
+import AnimateLoader from "@/components/ui/loader";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -53,7 +53,7 @@ export default function NewCoursePage() {
   };
 
   return (
-    <div className="grid place-items-center h-screen">
+    <div className="grid place-items-center h-screen p-4">
       <div>
         <Heading
           title="Course Title"
@@ -95,7 +95,7 @@ export default function NewCoursePage() {
                   </Button>
                   <Button type="submit" disabled={loading}>
                     {loading ? (
-                      <Loader size={24} color="white" />
+                      <AnimateLoader size={24} color="white" />
                     ) : (
                       <h1>Continue</h1>
                     )}
