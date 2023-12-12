@@ -65,11 +65,12 @@ export default async function Instructor() {
 
         <AspectRatio ratio={16 / 9}>
           <Image
-            src="/img/instructor-hero.png"
+            src="/img/Instructor-hero.png"
             alt="Product screenshot"
             className=" shadow-xl rounded-xl ring-1 ring-gray-400/10"
             width={2432}
             height={1442}
+            priority
           />
         </AspectRatio>
       </div>
