@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Learning Management System (LMS) with Next.js, Prisma, MongoDB, Uploadthing, Clerk, Mux, and Vidstack
+
+![Instructor-hero](https://github.com/kcokoji/learnhub/assets/100976015/02e69b95-84bd-4899-8181-f54390d8a5e5)
+
+
+## Project Overview
+
+This repository contains the source code for a modern Learning Management System (LMS) built using Next.js as the frontend framework, Prisma and MongoDB for database management, Uploadthing for file uploads, Clerk for authentication, and Mux and Vidstack for handling video content. The LMS is designed to provide a comprehensive platform for managing and delivering educational content efficiently.
+
+### Features
+
+- **Next.js Frontend:** Utilizing the power of Next.js for building a dynamic and responsive user interface.
+- **Prisma and MongoDB:** Employing Prisma as the database ORM and MongoDB as the database to store and retrieve data efficiently.
+- **Uploadthing Integration:** Seamless integration with Uploadthing for easy and secure file uploads, catering to various content types.
+- **Clerk Authentication:** Implementing Clerk for user authentication, ensuring a secure and user-friendly login experience.
+- **Mux and Vidstack Integration:** Leveraging Mux and Vidstack for video processing, streaming, and management within the LMS.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/kcokoji/learnhub.git
 ```
+### 2. Install dependencies:
+```bash
+cd your-repo
+npm install
+```
+### 3. Configure environment variables:
+Create a .env file based on the provided .env.example template. Update the variables with your own API keys, database connection strings, and other configuration options.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Run the development server:
+```bash
+npm run dev
+```
+The application should now be accessible at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 5.Environment Variables
+The project relies on several environment variables for configuration. Create a .env file in the root of your project based on the provided .env.example template. Update each variable with your own values.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Example .env File
+```bash
 
-## Learn More
+# Prisma
+DATABASE_URL=
 
-To learn more about Next.js, take a look at the following resources:
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Uploadthing
+UPLOADTHING_SECRET=
 
-## Deploy on Vercel
+# Mux
+MUX_TOKEN_ID=
+MUX_SECRET_KEY=
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#Paystack
+PAYSTACK_PUBLIC_KEY
+```
+Ensure that you keep your .env file secure and do not expose sensitive information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Deployment
+To deploy the LMS, follow the deployment guidelines for each service (Next.js, Prisma, MongoDB, Uploadthing, Clerk, Mux, and Vidstack) and ensure that all necessary environment variables are set correctly in the production environment.
+
+### Contributing
+If you would like to contribute to the project, please follow the contributing guidelines.
+
+### License
+This project is licensed under the MIT License. Feel free to fork and modify the code for your own educational or commercial purposes.
+
+### Acknowledgments
+Special thanks to the contributors and the open-source community for their valuable contributions and support.
