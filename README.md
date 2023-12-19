@@ -24,7 +24,7 @@ git clone https://github.com/kcokoji/learnhub.git
 ```
 ### 2. Install dependencies:
 ```bash
-cd your-repo
+cd learnhub
 npm install
 ```
 ### 3. Configure environment variables:
