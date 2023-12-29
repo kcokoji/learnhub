@@ -30,9 +30,6 @@ export default async function CourseCard({ data }) {
 
   const transaction = await getTransactionByCourse(courseId, userId);
 
-  const title =
-    data.title.length > 45 ? `${data.title.substring(0, 45)}...` : data.title;
-
   return (
     <Card className="w-full shadow-xl transform transition-transform hover:scale-95">
       <Link href={`/course/${data.id}`}>
@@ -48,7 +45,7 @@ export default async function CourseCard({ data }) {
           </AspectRatio>
         </div>
         <CardHeader className="pb-2">
-          <CardTitle>{title}</CardTitle>
+          <CardTitle className="line-clamp-1">{data.title}</CardTitle>
           <CardDescription className="flex items-center">
             <LibraryBig className="h-5 w-5 mr-2 text-primary" />{" "}
             {numberOfChapters} Chapters
