@@ -20,6 +20,7 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
+import { SignInButton } from "@clerk/nextjs";
 
 export default function Chapter({
   data,
@@ -142,17 +143,25 @@ export default function Chapter({
           <div className=" flex justify-between">
             <Heading title={data.title} />
             {!transaction ? (
-              <Button
-                disabled={loading}
-                onClick={() => {
-                  if (!userId && !email) {
-                    return router.push("/sign-in");
-                  }
-                  return initializePayment(onSuccess, onClose);
-                }}
-              >
-                Enroll Now
-              </Button>
+              <>
+                {!userId ? (
+                  <SignInButton
+                    afterSignInUrl={`course/${params.courseId}/chapters/${params.chapterId}`}
+                    afterSignUpUrl={`course/${params.courseId}/chapters/${params.chapterId}`}
+                  >
+                    <Button>Enroll Now</Button>
+                  </SignInButton>
+                ) : (
+                  <Button
+                    disabled={loading}
+                    onClick={() => {
+                      return initializePayment(onSuccess, onClose);
+                    }}
+                  >
+                    Enroll Now
+                  </Button>
+                )}
+              </>
             ) : (
               <>
                 {initalProgress ? (

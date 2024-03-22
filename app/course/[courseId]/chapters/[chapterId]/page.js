@@ -16,6 +16,7 @@ export default async function ChaptersPage({
   const data = await getChapter(chapterId);
   const course = await getCourse(courseId);
   const user = await currentUser();
+
   const userId = user?.id;
   const userEmail = user?.emailAddresses[0]?.emailAddress;
   const transaction = await getTransactionByCourse(courseId, userId);
@@ -48,7 +49,7 @@ export default async function ChaptersPage({
       <Separator />
       <Chapter
         data={data}
-        Id={userId}
+        userId={userId}
         email={userEmail}
         price={course.price}
         courseId={course.id}

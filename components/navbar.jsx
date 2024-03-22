@@ -114,7 +114,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-y-0 z-50 w-full bg-black px-6 py-6  sm:ring-1 sm:ring-gray-900/10 lg:hidden"
+            className="fixed inset-y-0 z-50 w-full bg-primary px-6 py-6  sm:ring-1 sm:ring-gray-900/10 lg:hidden"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
